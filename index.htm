@@ -3,59 +3,163 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>EmidLabs</title>
+  <title>EmidLabs — Quantitative Trading Intelligence</title>
+
+  <!-- Fonte simples e moderna -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
 
   <style>
-    body {
+    * {
+      box-sizing: border-box;
       margin: 0;
-      background: #ffffff;
-      font-family: Arial, sans-serif;
+      padding: 0;
+    }
+
+    body {
+      min-height: 100vh;
       display: flex;
-      flex-direction: column;
       align-items: center;
       justify-content: center;
-      height: 100vh;
+      font-family: "Inter", system-ui, -apple-system, BlinkMacSystemFont, sans-serif;
+      background:
+        radial-gradient(circle at top left, #1e293b 0, transparent 50%),
+        radial-gradient(circle at bottom right, #0ea5e9 0, transparent 55%),
+        #020617;
+      color: #e5e7eb;
+      padding: 24px;
+    }
+
+    .card {
+      width: 100%;
+      max-width: 640px;
+      background: rgba(15, 23, 42, 0.96);
+      border-radius: 24px;
+      border: 1px solid rgba(148, 163, 184, 0.25);
+      box-shadow:
+        0 22px 45px rgba(15, 23, 42, 0.75),
+        0 0 0 1px rgba(15, 23, 42, 0.8);
+      padding: 32px 24px 28px;
       text-align: center;
-      padding: 20px;
     }
-    img {
-      width: 220px;
-      margin-bottom: 40px;
+
+    @media (min-width: 640px) {
+      .card {
+        padding: 40px 40px 32px;
+      }
     }
+
+    .logo-wrapper {
+      display: flex;
+      justify-content: center;
+      margin-bottom: 28px;
+    }
+
+    .logo {
+      max-width: 180px;
+      width: 42vw;
+      border-radius: 20px;
+      box-shadow: 0 14px 35px rgba(37, 99, 235, 0.35);
+    }
+
+    .badge {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+      padding: 4px 12px;
+      border-radius: 999px;
+      background: rgba(37, 99, 235, 0.1);
+      color: #bfdbfe;
+      font-size: 12px;
+      font-weight: 500;
+      margin-bottom: 12px;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+    }
+
+    .badge-dot {
+      width: 7px;
+      height: 7px;
+      border-radius: 999px;
+      background: #22c55e;
+      box-shadow: 0 0 0 6px rgba(34, 197, 94, 0.25);
+    }
+
     h1 {
-      font-size: 46px;
-      margin: 0;
+      font-size: 32px;
+      line-height: 1.1;
+      margin-bottom: 6px;
       font-weight: 700;
+      color: #f9fafb;
     }
-    h3 {
-      font-size: 20px;
-      color: #555;
-      margin: 10px 0 25px;
+
+    @media (min-width: 640px) {
+      h1 {
+        font-size: 36px;
+      }
     }
-    p {
-      font-size: 18px;
-      color: #777;
-      max-width: 460px;
-      line-height: 1.5;
+
+    h2 {
+      font-size: 16px;
+      font-weight: 500;
+      color: #9ca3af;
+      margin-bottom: 20px;
     }
+
+    .description {
+      font-size: 15px;
+      color: #d1d5db;
+      line-height: 1.7;
+      max-width: 480px;
+      margin: 0 auto 20px;
+    }
+
     .soon {
-      margin-top: 25px;
-      font-size: 18px;
-      font-weight: bold;
-      color: #333;
+      font-size: 14px;
+      font-weight: 500;
+      color: #e5e7eb;
+      margin-top: 10px;
+    }
+
+    .soon span {
+      color: #38bdf8;
+    }
+
+    .footer {
+      margin-top: 26px;
+      font-size: 12px;
+      color: #6b7280;
     }
   </style>
 </head>
 <body>
+  <main class="card">
+    <div class="logo-wrapper">
+      <img src="emidlabs-logo.png" alt="Logo EmidLabs" class="logo" />
+    </div>
 
-  <img src="emidlabs.png" />
+    <div class="badge">
+      <span class="badge-dot"></span>
+      <span>Coming soon</span>
+    </div>
 
-  <h1>EmidLabs</h1>
-  <h3>Quantitative Trading Intelligence</h3>
+    <h1>EmidLabs</h1>
+    <h2>Quantitative Trading Intelligence</h2>
 
-  <p>Estamos construindo uma plataforma de análise quantitativa e automação de estratégias de trade.</p>
+    <p class="description">
+      Estamos construindo uma plataforma de análise quantitativa, backtests inteligentes
+      e automação de estratégias de trade, para levar sua tomada de decisão a outro nível.
+    </p>
 
-  <p class="soon">Produto em desenvolvimento. Novidades em breve.</p>
+    <p class="soon">
+      Produto em desenvolvimento. <span>Novidades em breve.</span>
+    </p>
 
+    <p class="footer">
+      © 2025 EmidLabs.com — All rights reserved.
+    </p>
+  </main>
 </body>
 </html>
