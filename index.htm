@@ -11,15 +11,11 @@
 
   <style>
     :root {
-      --bg-start: #020617;
-      --bg-end: #0b1220;
-      --card-bg: rgba(15, 23, 42, 0.96);
-      --accent: #0ea5e9;
-      --text-main: #e5e7eb;
+      --bg-main: #050816;
+      --text-main: #f9fafb;
       --text-muted: #9ca3af;
-      --border-subtle: rgba(148, 163, 184, 0.25);
-      --shadow-soft: 0 24px 60px rgba(15, 23, 42, 0.75);
-      --radius-xl: 24px;
+      --border-subtle: rgba(148, 163, 184, 0.28);
+      --radius-pill: 999px;
     }
 
     * {
@@ -29,158 +25,250 @@
     body {
       margin: 0;
       min-height: 100vh;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      padding: 24px;
-      background: radial-gradient(circle at top, #1f2937 0, var(--bg-start) 40%, var(--bg-end) 100%);
-      font-family: system-ui, -apple-system, BlinkMacSystemFont, "SF Pro Text",
-        -sans-serif;
-      color: var(--text-main);
-    }
-
-    .shell {
-      width: 100%;
-      max-width: 720px;
-    }
-
-    .card {
-      background: var(--card-bg);
-      border-radius: var(--radius-xl);
-      box-shadow: var(--shadow-soft);
-      padding: 40px 32px 32px;
-      border: 1px solid var(--border-subtle);
-      backdrop-filter: blur(16px);
-    }
-
-    @media (min-width: 640px) {
-      .card {
-        padding: 48px 48px 40px;
-      }
-    }
-
-    .logo-wrap {
+      padding: 32px 32px 24px;
       display: flex;
       flex-direction: column;
+      background: radial-gradient(circle at top, #1f2937 0, var(--bg-main) 40%, #020617 100%);
+      color: var(--text-main);
+      font-family: system-ui, -apple-system, BlinkMacSystemFont, "SF Pro Text", sans-serif;
+    }
+
+    /* Top bar */
+
+    header {
+      display: flex;
       align-items: center;
-      gap: 14px;
-      margin-bottom: 28px;
+      justify-content: space-between;
+      gap: 16px;
+      font-size: 13px;
     }
 
-    .logo {
-      width: 120px;
-      height: auto;
-      border-radius: 20px;
-      background: #ffffff;
-      padding: 14px;
-      box-shadow: 0 12px 30px rgba(15, 23, 42, 0.45);
-    }
-
-    .badge {
-      font-size: 11px;
+    .brand-name {
+      letter-spacing: 0.18em;
       text-transform: uppercase;
-      letter-spacing: 0.12em;
+      font-size: 12px;
+    }
+
+    .brand-sub {
+      display: block;
+      font-size: 11px;
       color: var(--text-muted);
+      margin-top: 2px;
+    }
+
+    .contact-link {
+      font-size: 11px;
+      letter-spacing: 0.16em;
+      text-transform: uppercase;
+      color: var(--text-muted);
+      text-decoration: none;
       display: inline-flex;
       align-items: center;
-      gap: 6px;
-      padding: 4px 10px;
-      border-radius: 999px;
-      border: 1px solid rgba(148, 163, 184, 0.35);
-      background: rgba(15, 23, 42, 0.9);
+      padding: 6px 18px;
+      border-radius: var(--radius-pill);
+      border: 1px solid var(--border-subtle);
+      background: rgba(15, 23, 42, 0.92);
+      backdrop-filter: blur(14px);
+      transition: all 0.18s ease-out;
     }
 
-    .badge-dot {
-      width: 6px;
-      height: 6px;
-      border-radius: 999px;
-      background: var(--accent);
-      box-shadow: 0 0 0 4px rgba(14, 165, 233, 0.35);
+    .contact-link:hover {
+      color: #e5e7eb;
+      border-color: rgba(209, 213, 219, 0.8);
+      background: rgba(17, 24, 39, 0.98);
+      transform: translateY(-1px);
     }
 
-    h1 {
+    /* Hero */
+
+    main {
+      flex: 1;
+      display: flex;
+      align-items: flex-start;
+      justify-content: center;
+      text-align: center;
+      padding: 120px 0 24px;
+    }
+
+    .hero-inner {
+      width: 100%;
+      max-width: 720px;
+      margin: 0 auto;
+    }
+
+    .coming-soon {
       margin: 0;
-      font-size: 26px;
-      line-height: 1.2;
-      text-align: center;
+      font-size: clamp(40px, 7vw, 56px);
+      letter-spacing: 0.32em;
+      text-transform: uppercase;
+      color: var(--text-main);
+      text-shadow:
+        0 0 26px rgba(0, 0, 0, 0.9),
+        0 0 40px rgba(15, 23, 42, 0.9);
     }
 
-    @media (min-width: 640px) {
-      h1 {
-        font-size: 30px;
-      }
-    }
-
-    .subhead {
-      margin-top: 14px;
-      font-size: 15px;
-      text-align: center;
+    .subtitle {
+      margin-top: 18px;
+      font-size: 16px;
       color: var(--text-muted);
     }
 
-    .body {
-      margin-top: 24px;
+    /* Texto institucional */
+
+    .body-copy {
+      margin-top: 32px;
       font-size: 14px;
-      line-height: 1.6;
+      line-height: 1.7;
       color: var(--text-muted);
       text-align: left;
+      max-width: 640px;
+      margin-left: auto;
+      margin-right: auto;
     }
 
-    .body p {
+    .body-copy p {
       margin: 0 0 10px;
     }
 
-    .body p:last-child {
+    .body-copy p:last-child {
       margin-bottom: 0;
     }
 
-    .cta {
-      margin-top: 26px;
-      padding-top: 18px;
-      border-top: 1px solid rgba(55, 65, 81, 0.7);
-      text-align: center;
+    /* Subscribe */
+
+    .subscribe {
+      margin-top: 32px;
+    }
+
+    .subscribe-row {
+      display: inline-flex;
+      align-items: stretch;
+      background: #ffffff;
+      border-radius: 5px;
+      overflow: hidden;
+      border: 1px solid rgba(15, 23, 42, 0.85);
+      box-shadow:
+        0 0 0 1px rgba(15, 23, 42, 0.4),
+        0 0 30px rgba(0, 0, 0, 0.7);
+      max-width: 520px;
+      width: 100%;
+    }
+
+    .subscribe-input {
+      flex: 1;
+      border: none;
+      outline: none;
+      padding: 12px 18px;
       font-size: 13px;
+      color: #111827;
+      background: transparent;
+    }
+
+    .subscribe-input::placeholder {
+      color: #9ca3af;
+    }
+
+    .subscribe-button {
+      border: none;
+      outline: none;
+      padding: 12px 32px;
+      font-size: 12px;
+      letter-spacing: 0.16em;
+      text-transform: uppercase;
+      font-weight: 600;
+      color: #111827;
+      background: linear-gradient(90deg, #f9fafb, #e5e7eb);
+      cursor: pointer;
+      white-space: nowrap;
+      border-left: 1px solid #e5e7eb;
+      transition: transform 0.16s ease-out,
+                  box-shadow 0.16s ease-out,
+                  filter 0.16s ease-out;
+    }
+
+    .subscribe-button:hover {
+      transform: translateY(-1px);
+      filter: brightness(0.98);
+      box-shadow: 0 8px 22px rgba(15, 23, 42, 0.45);
+    }
+
+    .subscribe-note {
+      margin-top: 10px;
+      font-size: 11px;
+      color: rgba(156, 163, 175, 0.9);
+    }
+
+    .status-line {
+      margin-top: 18px;
+      font-size: 12px;
       color: #e5e7eb;
     }
 
-    .cta span {
-      color: var(--accent);
+    .status-line span {
       font-weight: 600;
     }
 
     footer {
-      margin-top: 18px;
-      text-align: center;
+      margin-top: 12px;
       font-size: 11px;
       color: rgba(156, 163, 175, 0.8);
+      text-align: center;
+    }
+
+    @media (max-width: 640px) {
+      body {
+        padding: 20px 18px;
+      }
+
+      header {
+        font-size: 12px;
+      }
+
+      main {
+        padding-top: 80px;
+      }
+
+      .subscribe-row {
+        max-width: 100%;
+      }
+
+      .subscribe-button {
+        padding-inline: 20px;
+      }
+
+      .body-copy {
+        font-size: 13px;
+      }
     }
   </style>
 </head>
 <body>
-  <main class="shell">
-    <section class="card" aria-labelledby="emidlabs-heading">
-      <div class="logo-wrap">
-        <img
-          src="emidlabs-logo-refinada.png"
-          alt="EmidLabs logo"
-          class="logo"
-        />
-        <div class="badge">
-          <span class="badge-dot"></span>
-          <span>EmidLabs • Research-driven fintech studio</span>
-        </div>
-      </div>
+  <header>
+    <div>
+      <div class="brand-name">EMIDLABS</div>
+      <span class="brand-sub">Research-driven fintech studio</span>
+    </div>
 
-      <h1 id="emidlabs-heading">
-        Building trading intelligence, one product at a time.
+    <a href="mailto:hello@emidlabs.com" class="contact-link">
+      Contact us
+    </a>
+  </header>
+
+  <main aria-labelledby="emidlabs-heading">
+    <div class="hero-inner">
+      <h1 class="coming-soon">
+        COMING&nbsp;SOON
       </h1>
 
-      <p class="subhead">
-        EmidLabs is a research-driven fintech studio focused on quantitative
-        trading, market data, and strategy automation.
+      <p class="subtitle" id="emidlabs-heading">
+        Building trading intelligence, one product at a time.
       </p>
 
-      <div class="body">
+      <div class="body-copy">
+        <p>
+          EmidLabs is a research-driven fintech studio focused on quantitative
+          trading, market data, and strategy automation.
+        </p>
         <p>
           We’re building tools for traders who care about data, discipline, and
           repeatable edges — not hype.
@@ -198,14 +286,31 @@
         </p>
       </div>
 
-      <div class="cta">
-        <span>Product in development.</span> More details coming soon.
-      </div>
-    </section>
+      <section class="subscribe" aria-label="Get notified">
+        <div class="subscribe-row">
+          <input
+            type="email"
+            class="subscribe-input"
+            placeholder="yourname@domain.com"
+            aria-label="Email address"
+          />
+          <button type="button" class="subscribe-button">
+            Subscribe
+          </button>
+        </div>
+        <p class="subscribe-note">
+          No spam. We’ll only reach out when we’re ready for early access.
+        </p>
+      </section>
 
-    <footer>
-      © 2025 EmidLabs. All rights reserved.
-    </footer>
+      <p class="status-line">
+        <span>Product in development.</span> More details coming soon.
+      </p>
+    </div>
   </main>
+
+  <footer>
+    © 2025 EmidLabs. All rights reserved.
+  </footer>
 </body>
 </html>
