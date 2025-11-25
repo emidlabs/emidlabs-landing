@@ -15,9 +15,7 @@
       --border-subtle: rgba(148, 163, 184, 0.28);
     }
 
-    * {
-      box-sizing: border-box;
-    }
+    * { box-sizing: border-box; }
 
     body {
       margin: 0;
@@ -130,13 +128,9 @@
       text-align: left;
     }
 
-    .body-copy p {
-      margin: 0 0 10px;
-    }
+    .body-copy p { margin: 0 0 10px; }
 
-    .subscribe {
-      margin-top: 32px;
-    }
+    .subscribe { margin-top: 32px; }
 
     .subscribe-row {
       display: flex;
@@ -157,10 +151,6 @@
       padding: 14px 18px;
       font-size: 14px;
       color: #111827;
-    }
-
-    .subscribe-input::placeholder {
-      color: #9ca3af;
     }
 
     .subscribe-button {
@@ -214,48 +204,21 @@
     }
 
     @media (max-width: 640px) {
-      body {
-        padding: 20px;
-      }
-
-      header {
-        flex-direction: column;
-        align-items: flex-start;
-      }
-
-      .coming-soon {
-        letter-spacing: 0.18em;
-        font-size: clamp(28px, 10vw, 42px);
-      }
-
-      main {
-        padding-top: 10vh;
-      }
-
-      .subscribe-row {
-        flex-direction: column;
-      }
-
+      body { padding: 20px; }
+      header { flex-direction: column; align-items: flex-start; }
+      .coming-soon { letter-spacing: 0.18em; font-size: clamp(28px, 10vw, 42px); }
+      main { padding-top: 10vh; }
+      .subscribe-row { flex-direction: column; }
       .subscribe-button {
         width: 100%;
         border-left: none;
         border-top: 1px solid #e5e7eb;
       }
-
-      .subscribe-input {
-        width: 100%;
-      }
-
-      .body-copy {
-        font-size: 14px;
-      }
+      .body-copy { font-size: 14px; }
     }
 
     @media (max-width: 420px) {
-      .coming-soon {
-        font-size: 26px;
-        letter-spacing: 0.12em;
-      }
+      .coming-soon { font-size: 26px; letter-spacing: 0.12em; }
     }
   </style>
 </head>
@@ -266,57 +229,42 @@
       <div class="brand-name">EMIDLABS</div>
       <span class="brand-sub">Research-driven fintech studio</span>
     </div>
-
-    <a href="mailto:hello@emidlabs.com" class="contact-link">
-      Contact us
-    </a>
+    <a href="samuel.emidio@emidlabs.com" class="contact-link">Contact us</a>
   </header>
 
   <main>
     <div class="hero-inner">
-      <h1 class="coming-soon fade-block">
-        COMING&nbsp;SOON
-      </h1>
+      <h1 class="coming-soon fade-block">COMING&nbsp;SOON</h1>
 
       <p class="subtitle fade-block">
         Building trading intelligence, one product at a time.
       </p>
 
       <div class="body-copy fade-block">
-        <p>
-          EmidLabs is a research-driven fintech studio focused on quantitative
-          trading, market data, and strategy automation.
-        </p>
-        <p>
-          We’re building tools for traders who care about data, discipline, and
-          repeatable edges — not hype.
-        </p>
-        <p>
-          Our first product, a quantitative trading assistant, is currently in
-          private development. It will combine signal generation, backtesting,
-          and smart automation to help traders make better decisions with less
-          noise.
-        </p>
-        <p>
-          As we iterate on the product, we’re testing everything on real
-          workflows and real market conditions first — before we open it up to a
-          wider group of traders.
-        </p>
+        <p>EmidLabs is a research-driven fintech studio focused on quantitative trading, market data, and strategy automation.</p>
+        <p>We’re building tools for traders who care about data, discipline, and repeatable edges — not hype.</p>
+        <p>Our first product, a quantitative trading assistant, is currently in private development. It will combine signal generation, backtesting, and smart automation to help traders make better decisions with less noise.</p>
+        <p>As we iterate on the product, we’re testing everything on real workflows and real market conditions first — before we open it up to a wider group of traders.</p>
       </div>
 
+      <!-- Formspree integrado -->
       <section class="subscribe fade-block" id="subscribe-section">
-        <div class="subscribe-row">
+        <form
+          class="subscribe-row"
+          action="https://formspree.io/f/xqaobgyj"
+          method="POST"
+        >
           <input
             type="email"
             class="subscribe-input"
+            name="email"
             placeholder="yourname@domain.com"
-            aria-label="Email address"
+            required
           />
-          <button class="subscribe-button">Subscribe</button>
-        </div>
-        <p class="subscribe-note">
-          No spam. We’ll only reach out when we’re ready for early access.
-        </p>
+          <button class="subscribe-button" type="submit">Subscribe</button>
+        </form>
+
+        <p class="subscribe-note">No spam. We’ll only reach out when we’re ready for early access.</p>
       </section>
 
       <p class="status-line">
@@ -325,9 +273,7 @@
     </div>
   </main>
 
-  <footer>
-    © 2025 EmidLabs. All rights reserved.
-  </footer>
+  <footer>© 2025 EmidLabs. All rights reserved.</footer>
 
   <script>
     const cursor = document.createElement("span");
