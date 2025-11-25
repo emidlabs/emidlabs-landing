@@ -30,7 +30,6 @@
       font-family: system-ui, -apple-system, BlinkMacSystemFont, sans-serif;
     }
 
-    /* HEADER */
     header {
       display: flex;
       align-items: center;
@@ -69,14 +68,20 @@
       white-space: nowrap;
     }
 
-    /* HERO */
+    .contact-link:hover {
+      color: #e5e7eb;
+      border-color: rgba(209, 213, 219, 0.8);
+      background: rgba(17, 24, 39, 0.98);
+      transform: translateY(-1px);
+    }
+
     main {
       flex: 1;
       display: flex;
       align-items: flex-start;
       justify-content: center;
       text-align: center;
-      padding-top: 12vh; /* melhor para telas pequenas e grandes */
+      padding-top: 12vh;
     }
 
     .hero-inner {
@@ -99,9 +104,21 @@
       margin-top: 18px;
       font-size: 16px;
       color: var(--text-muted);
+      min-height: 1.4em;
     }
 
-    /* BODY COPY */
+    .cursor {
+      display: inline-block;
+      margin-left: 6px;
+      font-weight: 700;
+      animation: blink 0.9s steps(1) infinite;
+    }
+
+    @keyframes blink {
+      0%, 50% { opacity: 1; }
+      50.01%, 100% { opacity: 0; }
+    }
+
     .body-copy {
       margin-top: 32px;
       font-size: 15px;
@@ -113,7 +130,10 @@
       text-align: left;
     }
 
-    /* SUBSCRIBE */
+    .body-copy p {
+      margin: 0 0 10px;
+    }
+
     .subscribe {
       margin-top: 32px;
     }
@@ -137,6 +157,10 @@
       padding: 14px 18px;
       font-size: 14px;
       color: #111827;
+    }
+
+    .subscribe-input::placeholder {
+      color: #9ca3af;
     }
 
     .subscribe-button {
@@ -167,6 +191,7 @@
       font-size: 12px;
       color: #e5e7eb;
       text-align: center;
+      min-height: 1.4em;
     }
 
     footer {
@@ -177,9 +202,17 @@
       padding-bottom: 12px;
     }
 
-    /* ------------------------- RESPONSIVIDADE ------------------------- */
+    .fade-block {
+      opacity: 0;
+      transform: translateY(12px);
+      transition: opacity 0.6s ease-out, transform 0.6s ease-out;
+    }
 
-    /* 📱 Mobile médio */
+    .fade-block.visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
     @media (max-width: 640px) {
       body {
         padding: 20px;
@@ -191,7 +224,7 @@
       }
 
       .coming-soon {
-        letter-spacing: 0.18em; /* reduzido para caber melhor */
+        letter-spacing: 0.18em;
         font-size: clamp(28px, 10vw, 42px);
       }
 
@@ -218,7 +251,6 @@
       }
     }
 
-    /* 📱 Mobile pequeno */
     @media (max-width: 420px) {
       .coming-soon {
         font-size: 26px;
@@ -242,29 +274,53 @@
 
   <main>
     <div class="hero-inner">
-      <h1 class="coming-soon">COMING&nbsp;SOON</h1>
+      <h1 class="coming-soon fade-block">
+        COMING&nbsp;SOON
+      </h1>
 
-      <p class="subtitle">
+      <p class="subtitle fade-block">
         Building trading intelligence, one product at a time.
       </p>
 
-      <div class="body-copy">
-        <p>EmidLabs is a research-driven fintech studio focused on quantitative trading, market data, and strategy automation.</p>
-        <p>We’re building tools for traders who care about data, discipline, and repeatable edges — not hype.</p>
-        <p>Our first product, a quantitative trading assistant, is currently in private development. It will combine signal generation, backtesting, and smart automation to help traders make better decisions with less noise.</p>
-        <p>As we iterate on the product, we’re testing everything on real workflows and real market conditions first — before we open it up to a wider group of traders.</p>
+      <div class="body-copy fade-block">
+        <p>
+          EmidLabs is a research-driven fintech studio focused on quantitative
+          trading, market data, and strategy automation.
+        </p>
+        <p>
+          We’re building tools for traders who care about data, discipline, and
+          repeatable edges — not hype.
+        </p>
+        <p>
+          Our first product, a quantitative trading assistant, is currently in
+          private development. It will combine signal generation, backtesting,
+          and smart automation to help traders make better decisions with less
+          noise.
+        </p>
+        <p>
+          As we iterate on the product, we’re testing everything on real
+          workflows and real market conditions first — before we open it up to a
+          wider group of traders.
+        </p>
       </div>
 
-      <section class="subscribe">
+      <section class="subscribe fade-block" id="subscribe-section">
         <div class="subscribe-row">
-          <input type="email" class="subscribe-input" placeholder="yourname@domain.com" />
+          <input
+            type="email"
+            class="subscribe-input"
+            placeholder="yourname@domain.com"
+            aria-label="Email address"
+          />
           <button class="subscribe-button">Subscribe</button>
         </div>
-        <p class="subscribe-note">No spam. We’ll only reach out when we’re ready for early access.</p>
+        <p class="subscribe-note">
+          No spam. We’ll only reach out when we’re ready for early access.
+        </p>
       </section>
 
       <p class="status-line">
-        <span>Product in development.</span> More details coming soon.
+        <span id="status-line"></span>
       </p>
     </div>
   </main>
@@ -272,5 +328,45 @@
   <footer>
     © 2025 EmidLabs. All rights reserved.
   </footer>
+
+  <script>
+    const cursor = document.createElement("span");
+    cursor.className = "cursor";
+    cursor.textContent = "₿";
+
+    function typeText(element, text, speed) {
+      return new Promise((resolve) => {
+        element.textContent = "";
+        element.appendChild(cursor);
+        let i = 0;
+        const interval = setInterval(() => {
+          cursor.before(document.createTextNode(text.charAt(i)));
+          i++;
+          if (i >= text.length) {
+            clearInterval(interval);
+            resolve();
+          }
+        }, speed);
+      });
+    }
+
+    async function startAnimation() {
+      const blocks = document.querySelectorAll(".fade-block");
+      let delay = 0;
+
+      blocks.forEach((block) => {
+        setTimeout(() => block.classList.add("visible"), delay);
+        delay += 350;
+      });
+
+      await new Promise((r) => setTimeout(r, delay + 300));
+
+      const statusEl = document.getElementById("status-line");
+      const statusText = "Product in development. More details coming soon.";
+      await typeText(statusEl, statusText, 38);
+    }
+
+    document.addEventListener("DOMContentLoaded", startAnimation);
+  </script>
 </body>
 </html>
