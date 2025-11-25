@@ -153,6 +153,10 @@
       color: #111827;
     }
 
+    .subscribe-input::placeholder {
+      color: #9ca3af;
+    }
+
     .subscribe-button {
       border: none;
       outline: none;
@@ -204,21 +208,49 @@
     }
 
     @media (max-width: 640px) {
-      body { padding: 20px; }
-      header { flex-direction: column; align-items: flex-start; }
-      .coming-soon { letter-spacing: 0.18em; font-size: clamp(28px, 10vw, 42px); }
-      main { padding-top: 10vh; }
-      .subscribe-row { flex-direction: column; }
+      body {
+        padding: 20px;
+      }
+
+      header {
+        flex-direction: row;
+        align-items: center;
+        justify-content: space-between;
+      }
+
+      .coming-soon {
+        letter-spacing: 0.18em;
+        font-size: clamp(28px, 10vw, 42px);
+      }
+
+      main {
+        padding-top: 10vh;
+      }
+
+      .subscribe-row {
+        flex-direction: column;
+      }
+
       .subscribe-button {
         width: 100%;
         border-left: none;
         border-top: 1px solid #e5e7eb;
       }
-      .body-copy { font-size: 14px; }
+
+      .subscribe-input {
+        width: 100%;
+      }
+
+      .body-copy {
+        font-size: 14px;
+      }
     }
 
     @media (max-width: 420px) {
-      .coming-soon { font-size: 26px; letter-spacing: 0.12em; }
+      .coming-soon {
+        font-size: 26px;
+        letter-spacing: 0.12em;
+      }
     }
   </style>
 </head>
@@ -229,7 +261,7 @@
       <div class="brand-name">EMIDLABS</div>
       <span class="brand-sub">Research-driven fintech studio</span>
     </div>
-    <a href="samuel.emidio@emidlabs.com" class="contact-link">Contact us</a>
+    <a href="mailto:hello@emidlabs.com" class="contact-link">Contact us</a>
   </header>
 
   <main>
@@ -247,7 +279,6 @@
         <p>As we iterate on the product, we’re testing everything on real workflows and real market conditions first — before we open it up to a wider group of traders.</p>
       </div>
 
-      <!-- Formspree integrado -->
       <section class="subscribe fade-block" id="subscribe-section">
         <form
           class="subscribe-row"
@@ -264,7 +295,9 @@
           <button class="subscribe-button" type="submit">Subscribe</button>
         </form>
 
-        <p class="subscribe-note">No spam. We’ll only reach out when we’re ready for early access.</p>
+        <p class="subscribe-note">
+          No spam. We’ll only reach out when we’re ready for early access.
+        </p>
       </section>
 
       <p class="status-line">
